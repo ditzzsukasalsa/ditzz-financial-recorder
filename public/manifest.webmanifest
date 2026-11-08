@@ -1,0 +1,25 @@
+{
+  "name": "DITZZ FINANCE",
+  "short_name": "DITZZ FINANCE",
+  "description": "Aplikasi pengelola keuangan pribadi",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f5f6f9",
+  "theme_color": "#e11d32",
+  "icons": [
+    {
+      "src": "/app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

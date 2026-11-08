@@ -1,0 +1,18 @@
+{
+  "name": "ditzz-finance",
+  "version": "1.7.5",
+  "description": "DITZZ FINANCE - wishlist savings contributions, transaction ledger, reports, calendar, and insights",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "dev": "node --watch server/index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "express-session": "^1.18.1",
+    "helmet": "^8.0.0",
+    "web-push": "^3.6.7"
+  }
+}
