@@ -24,6 +24,21 @@ app.use(session({
   cookie: { httpOnly: true, sameSite: "lax", secure: process.env.NODE_ENV === "production", maxAge: 8 * 60 * 60 * 1000 }
 }));
 app.use(express.static(path.join(__dirname, "..", "public")));
+// Initialize once per warm serverless instance. On Vercel, DATA_DIR points to /tmp;
+// note that /tmp is ephemeral and is NOT a persistent production database.
+let initialization;
+app.use(async (req, res, next) => {
+  try {
+    initialization ||= seedAdmin();
+    await initialization;
+    next();
+  } catch (error) {
+    initialization = null;
+    console.error("Gagal menyiapkan database:", error.message);
+    res.status(500).json({ message: "Server gagal menyiapkan penyimpanan." });
+  }
+});
+
 const loginLimiter = rateLimit({ windowMs: 15 * 60 * 1000, limit: 10, standardHeaders: true, legacyHeaders: false, message: { message: "Terlalu banyak percobaan. Coba lagi beberapa menit." } });
 
 function auth(req, res, next) {
@@ -414,15 +429,32 @@ app.get("/api/backup", auth, (req, res) => {
   res.json(data);
 });
 
+// Vercel Cron / external scheduler endpoint for push reminders.
+app.get("/api/cron/push", async (req, res) => {
+  const secret = process.env.CRON_SECRET;
+  if (!secret || req.headers.authorization !== `Bearer ${secret}`) {
+    return res.status(401).json({ message: "Unauthorized." });
+  }
+  try {
+    await pushService.runScheduler();
+    res.json({ success: true, message: "Pemeriksaan notifikasi selesai." });
+  } catch (error) {
+    console.error("Cron push gagal:", error.message);
+    res.status(500).json({ message: "Pemeriksaan notifikasi gagal." });
+  }
+});
+
 app.use("/api", (req, res) => res.status(404).json({ message: "Endpoint tidak ditemukan." }));
 app.get("*", (req, res) => res.sendFile(path.join(__dirname, "..", "public", "index.html")));
 
-seedAdmin().then(() => {
-  pushService.startScheduler();
-  app.listen(PORT, () => {
-  console.log(`DITZZ FINANCE berjalan di http://localhost:${PORT}`);
+if (require.main === module) {
+  seedAdmin().then(() => {
+    pushService.startScheduler();
+    app.listen(PORT, () => console.log(`DITZZ FINANCE berjalan di http://localhost:${PORT}`));
+  }).catch(err => {
+    console.error("Gagal menyiapkan database:", err.message);
+    process.exit(1);
   });
-}).catch(err => {
-  console.error("Gagal menyiapkan database:", err.message);
-  process.exit(1);
-});
+}
+
+module.exports = app;

@@ -1,60 +1,12 @@
 {
-  "users": [
-    {
-      "id": "usr_mw7yiquw",
-      "username": "ditzz",
-      "passwordHash": "$2a$12$atguzwT9sCAbdD5sWHv3ZeP/1.Y0DE96TMNcPFq9uIomTHLNzl8pu",
-      "name": "DITZZ",
-      "createdAt": "2026-11-08T14:58:10.059Z"
-    }
-  ],
-  "transactions": [
-    {
-      "id": "4359cb84-ca6a-408f-8a35-65a86d5bd69b",
-      "userId": "usr_mw7yiquw",
-      "type": "income",
-      "amount": 1000,
-      "title": "Jbv",
-      "category": "Gaji",
-      "date": "2026-11-08",
-      "note": "",
-      "walletId": "0c0e7be2-1336-4f38-bf0d-1696f1a6db11",
-      "receipt": "",
-      "createdAt": "2026-11-08T15:05:16.100Z",
-      "updatedAt": "2026-11-08T15:05:16.100Z"
-    }
-  ],
+  "users": [],
+  "transactions": [],
   "budgets": [],
   "goals": [],
-  "wallets": [
-    {
-      "id": "0c0e7be2-1336-4f38-bf0d-1696f1a6db11",
-      "userId": "usr_mw7yiquw",
-      "name": "Dompet utama",
-      "type": "cash",
-      "openingBalance": 0,
-      "isDefault": true,
-      "createdAt": "2026-11-08T15:05:16.100Z"
-    }
-  ],
+  "wallets": [],
   "recurring": [],
   "bills": [],
-  "pushSubscriptions": [
-    {
-      "id": "392dc18d-afbc-473c-9ccd-511c03418726",
-      "userId": "usr_mw7yiquw",
-      "subscription": {
-        "endpoint": "https://fcm.googleapis.com/fcm/send/fWvlTLiaoiY:APA91bHjwsFm9-1BM58s-KQT5G1Py-G7OQ237O-1TS9xkaYGH7nu9wOjn8AivSLViOxMcj5Tiz4zrKfsE81-y3srwFQsMJ57Va3xFapIOxkUeG-zix7DmyfsgOce9AnstZHy9R4c17VL",
-        "expirationTime": null,
-        "keys": {
-          "p256dh": "BMsWGuB5Rs2fPur29ugWslub2YN42r83PSRs75qQNtNFIbuggr1AIirNzkbqtvivLAeLNgPDAUDg7suYn-21CGI",
-          "auth": "JgTFZNpYfEZGBG61c7bHzQ"
-        }
-      },
-      "createdAt": "2026-11-08T15:05:47.068Z"
-    }
-  ],
+  "pushSubscriptions": [],
   "pushPreferences": [],
-  "pushSent": [],
-  "wishlist": []
+  "pushSent": []
 }

@@ -4,7 +4,7 @@ const path = require("path");
 const webpush = require("web-push");
 const { readDb, writeDb } = require("./store");
 
-const DATA_DIR = path.join(__dirname, "..", "data");
+const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, "..", "data");
 const KEY_FILE = path.join(DATA_DIR, "vapid-keys.json");
 const DEFAULT_PREFS = Object.freeze({
   billReminders: false,
@@ -139,4 +139,4 @@ function startScheduler() {
   setInterval(() => runScheduler().catch(error => console.error("Push scheduler:", error.message)), 60 * 1000).unref();
 }
 
-module.exports = { vapidPublicKey: vapidKeys.publicKey, DEFAULT_PREFS, preferencesFor, sendUser, startScheduler };
+module.exports = { vapidPublicKey: vapidKeys.publicKey, DEFAULT_PREFS, preferencesFor, sendUser, runScheduler, startScheduler };

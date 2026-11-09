@@ -5,7 +5,8 @@
   "main": "server/index.js",
   "scripts": {
     "start": "node server/index.js",
-    "dev": "node --watch server/index.js"
+    "dev": "node --watch server/index.js",
+    "vercel-build": "echo \"DITZZ FINANCE Vercel function ready\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -14,5 +15,8 @@
     "express-session": "^1.18.1",
     "helmet": "^8.0.0",
     "web-push": "^3.6.7"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
