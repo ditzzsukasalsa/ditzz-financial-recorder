@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "node --watch server/index.js",
-    "vercel-build": "echo \"DITZZ FINANCE Vercel function ready\""
+    "vercel-build": "echo \"DITZZ FINANCE Vercel function ready\"",
+    "build": "echo \"No frontend build step required\""
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

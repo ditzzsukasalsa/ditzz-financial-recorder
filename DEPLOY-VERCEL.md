@@ -11,7 +11,9 @@
 1. Ekstrak ZIP ini.
 2. Upload folder `ditzz-finance` ke repository GitHub.
 3. Import repository tersebut di https://vercel.com/new.
-4. Framework Preset pilih **Other**. Root Directory pilih folder project (folder yang berisi `package.json`).
+4. **PENTING untuk error `[NEXT_NO_VERSION]`:** di Vercel buka Project → Settings → Build & Development Settings → Framework Preset, lalu pilih **Other** (jangan Next.js). Pastikan Root Directory menunjuk ke folder yang berisi `package.json` (jika repository berisi langsung `package.json`, gunakan `./`; jika masih berada di subfolder `ditzz-finance`, pilih `ditzz-finance`). Simpan lalu lakukan Redeploy.
+
+Konfigurasi ZIP ini menetapkan build command sederhana dan output folder `public`. Project ini bukan Next.js dan tidak perlu dependency `next`.
 5. Tambahkan Environment Variables berikut di Vercel (Production dan Preview sesuai kebutuhan):
    - `SESSION_SECRET`: string acak panjang.
    - `DATA_DIR`: `/tmp/ditzz-finance-data`.
